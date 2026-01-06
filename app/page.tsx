@@ -1,65 +1,118 @@
-import Image from "next/image";
+'use client';
+
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useLanguage } from './context/LanguageContext';
 
 export default function Home() {
+  const { isLangThai } = useLanguage();
+  
+  const services = [
+    { 
+      title: { en: 'Full Body Paint', th: 'ทาสีรถทั้งคัน' }, 
+      desc: { en: 'Complete car repainting with premium materials', th: 'ทาสีรถใหม่ทั้งคันด้วยวัสดุคุณภาพสูง' }
+    },
+    { 
+      title: { en: 'Spot Repair', th: 'ซ่อมจุดด่างดำ' }, 
+      desc: { en: 'Quick and precise damage fixes', th: 'ซ่อมแซมความเสียหายอย่างรวดเร็วและแม่นยำ' }
+    },
+    { 
+      title: { en: 'Custom Colors', th: 'สีตามสั่ง' }, 
+      desc: { en: 'Unique color matching and custom designs', th: 'ผสมสีและออกแบบตามความต้องการ' }
+    },
+    { 
+      title: { en: 'Clear Coat', th: 'เคลือบเงา' }, 
+      desc: { en: 'Professional protective coating', th: 'เคลือบเงาป้องกันแบบมืออาชีพ' }
+    },
+    { 
+      title: { en: 'Detailing', th: 'ดีเทลลิ่ง' }, 
+      desc: { en: 'Complete interior and exterior detailing', th: 'ดีเทลลิ่งภายในและภายนอกครบวงจร' }
+    },
+    { 
+      title: { en: 'Restoration', th: 'ฟื้นฟูสภาพรถ' }, 
+      desc: { en: 'Classic car restoration services', th: 'บริการฟื้นฟูรถคลาสสิก' }
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-[#121212] pt-16">
+        {/* Hero Section - Full Image */}
+        <section className="h-screen relative overflow-hidden">
+          <Image
+            src="/eugene-chystiakov-JzOOT4kY_NE-unsplash.png"
+            alt="Car body spray work"
+            fill
+            className="object-cover object-right md:object-center animate-zoom"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 flex items-center justify-center px-8">
+            <div className="max-w-3xl text-center">
+              <h1 className="text-5xl md:text-7xl text-[#F8F9FA] mb-6">
+                <span className="font-bold">LOUIE</span> <span className="font-light">Pattaya</span><br />
+                <span className="font-mono font-semibold">Car<span className="bg-[radial-gradient(ellipse_at_center,_#00BCD4_0%,_#2196F3_50%,_#9C27B0_100%)] bg-clip-text text-transparent">&</span>Color</span>
+              </h1>
+              <p className="text-xl text-[#F8F9FA] mb-8">
+                {isLangThai ? 'บริการทาสีและซ่อมแซมรถยนต์แบบมืออาชีพ' : 'Expert automotive painting and restoration services'}
+              </p>
+              <Link href="/gallery">
+                <button className="bg-[#2196F3] text-white px-8 py-4 rounded-lg shadow-[0_0_20px_rgba(33,150,243,0.5)] hover:scale-105 hover:shadow-[0_0_30px_rgba(33,150,243,0.8)] transition-all">
+                  {isLangThai ? 'ดูผลงานของเรา' : 'View Our Work'}
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="py-20 px-8">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-mono font-bold text-[#F8F9FA] mb-12 text-center">
+              {isLangThai ? 'บริการของเรา' : 'Our Services'}
+            </h2>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, i) => (
+                <div 
+                  key={i} 
+                  className="relative overflow-hidden p-8 rounded-lg border border-[#BDC3C7]/20 hover:border-[#2196F3]/40 transition-colors"
+                  style={{
+                    backgroundColor: '#1a1a1a'
+                  }}
+                >
+                  {/* Left Pattern Strip with Gradient */}
+                  <div 
+                    className="absolute left-0 top-0 bottom-0 w-32"
+                    style={{
+                      backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  />
+                  <div 
+                    className="absolute left-0 top-0 bottom-0 w-32"
+                    style={{
+                      background: 'linear-gradient(to right, rgba(33, 150, 243, 0.1), transparent)'
+                    }}
+                  />
+                  
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-mono font-bold text-[#F8F9FA] mb-4">
+                      {isLangThai ? service.title.th : service.title.en}
+                    </h3>
+                    <p className="text-[#BDC3C7]">
+                      {isLangThai ? service.desc.th : service.desc.en}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
