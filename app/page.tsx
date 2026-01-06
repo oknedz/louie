@@ -43,20 +43,20 @@ export default function Home() {
         {/* Hero Section - Full Image */}
         <section className="h-screen relative overflow-hidden">
           <Image
-            src="/eugene-chystiakov-JzOOT4kY_NE-unsplash.png"
+            src="/eugene-chystiakov-JzOOT4kY_NE-unsplash.avif"
             alt="Car body spray work"
             fill
             className="object-cover object-right md:object-center animate-zoom"
             priority
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/70" />
           <div className="absolute inset-0 flex items-center justify-center px-8">
             <div className="max-w-3xl text-center">
-              <h1 className="text-5xl md:text-7xl text-[#F8F9FA] mb-6">
+              <h1 className="text-5xl md:text-7xl text-[#E8E8E8] mb-6">
                 <span className="font-bold">LOUIE</span> <span className="font-light">Pattaya</span><br />
                 <span className="font-mono font-semibold">Car<span className="bg-[radial-gradient(ellipse_at_center,_#00BCD4_0%,_#2196F3_50%,_#9C27B0_100%)] bg-clip-text text-transparent">&</span>Color</span>
               </h1>
-              <p className="text-xl text-[#F8F9FA] mb-8">
+              <p className="text-xl text-[#E8E8E8] mb-8">
                 {isLangThai ? 'บริการทาสีและซ่อมแซมรถยนต์แบบมืออาชีพ' : 'Expert automotive painting and restoration services'}
               </p>
               <Link href="/gallery">

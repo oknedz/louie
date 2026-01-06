@@ -11,12 +11,12 @@ export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const galleryImages = [
-    { src: '/denin-lawley-YWl9W8iBiUk-unsplash.jpg', alt: 'Car 1' },
-    { src: '/eugene-chystiakov-JzOOT4kY_NE-unsplash.jpg', alt: 'Car 2' },
-    { src: '/eugene-chystiakov-JzOOT4kY_NE-unsplash.png', alt: 'Car 3' },
-    { src: '/florian-schneider-799KfBloSFQ-unsplash.jpg', alt: 'Car 4' },
-    { src: '/teo-zac-AFuFR5VVilo-unsplash.jpg', alt: 'Car 5' },
-    { src: '/wolf-schram-19t6J2RVqQE-unsplash.jpg', alt: 'Car 6' },
+    { src: '/denin-lawley-YWl9W8iBiUk-unsplash.avif', alt: 'Car 1' },
+    { src: '/eugene-chystiakov-JzOOT4kY_NE-unsplash.avif', alt: 'Car 2' },
+    { src: '/eugene-chystiakov-JzOOT4kY_NE-unsplash.avif', alt: 'Car 3' },
+    { src: '/florian-schneider-799KfBloSFQ-unsplash.avif', alt: 'Car 4' },
+    { src: '/teo-zac-AFuFR5VVilo-unsplash.avif', alt: 'Car 5' },
+    { src: '/wolf-schram-19t6J2RVqQE-unsplash.avif', alt: 'Car 6' },
   ];
 
   const openModal = (index: number) => {
@@ -61,6 +61,9 @@ export default function Gallery() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={i < 3}
+                  loading={i < 3 ? undefined : 'lazy'}
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
